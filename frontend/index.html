@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Red Flag / Green Flag Testi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="eyebrow">🚩 vs 💚</div>
+    <h1>İlişki Güvenlik Testi</h1>
+    <p class="subtitle">Senaryonu anlat, arkadaşın yorumlasın</p>
+
+    <textarea id="scenario" placeholder="Senaryonu buraya yaz... (ör. Sürekli telefonumu kontrol ediyor)"></textarea>
+    <input id="nickname" placeholder="Takma adın (opsiyonel)">
+    <button onclick="analyzeScenario()" id="analyzeBtn">Analiz Et ✨</button>
+
+    <div id="result" class="hidden">
+      <div class="meter-wrap">
+        <div class="meter-track">
+          <div class="meter-fill" id="meterFill"></div>
+        </div>
+        <div class="meter-label" id="meterLabel">%0 toxic</div>
+      </div>
+      <h2 id="verdict"></h2>
+      <p id="commentary"></p>
+      <img id="card" src="" alt="Sonuç Kartı">
+      <button onclick="downloadCard()" class="secondary-btn">📥 Kartı İndir</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
