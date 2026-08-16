@@ -1,4 +1,4 @@
-const API_URL = "https://outsider-umpire-fifth.ngrok-free.dev";
+const API_URL = "http://127.0.0.1:8000";
 
 async function analyzeScenario() {
   const text = document.getElementById("scenario").value;
@@ -17,8 +17,7 @@ async function analyzeScenario() {
     const response = await fetch(`${API_URL}/analyze`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        "ngrok-skip-browser-warning": "true"
+        "Content-Type": "application/json"
       },
       body: JSON.stringify({ text, nickname }),
     });
@@ -29,13 +28,7 @@ async function analyzeScenario() {
     document.getElementById("commentary").innerText = data.commentary;
     document.getElementById("meterFill").style.width = data.toxic_percentage + "%";
     document.getElementById("meterLabel").innerText = "%" + data.toxic_percentage + " toxic";
-
-    const imageResponse = await fetch(API_URL + data.card_url, {
-      headers: { "ngrok-skip-browser-warning": "true" }
-    });
-    const imageBlob = await imageResponse.blob();
-    const imageObjectUrl = URL.createObjectURL(imageBlob);
-    document.getElementById("card").src = imageObjectUrl;
+    document.getElementById("card").src = API_URL + data.card_url;
 
     document.getElementById("result").classList.remove("hidden");
   } catch (err) {
